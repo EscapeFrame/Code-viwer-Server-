@@ -1,0 +1,7 @@
+docker build -t my-ubuntu-image .
+docker run -d -p 8080:80 my-ubuntu-image
+
+위 과정에서 문제 없이 실행 됬다면
+localhost:8080
+에 접속 해봐서 
+WELCOME TO MT UBUNTU SERVER이 뜨면 문제 없음
