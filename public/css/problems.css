@@ -1,0 +1,144 @@
+/* VS Code 스타일 변수는 style.css에서 상속 */
+
+.problems-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.problems-header {
+    margin-bottom: 40px;
+}
+
+.problems-header h1 {
+    color: var(--neon-purple-light);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: var(--neon-glow);
+}
+
+.filter-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.filter-bar select {
+    background-color: var(--vs-sidebar);
+    color: var(--vs-foreground);
+    border: 1px solid var(--neon-purple);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: var(--neon-glow);
+}
+
+.filter-bar select:hover,
+.filter-bar select:focus {
+    border-color: var(--neon-purple-light);
+    box-shadow: var(--neon-glow-strong);
+}
+
+.problems-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.problem-card {
+    background-color: var(--vs-sidebar);
+    border: 1px solid var(--neon-purple);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--neon-glow);
+}
+
+.problem-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--neon-purple-light);
+    box-shadow: var(--neon-glow-strong);
+}
+
+.problem-number {
+    color: var(--neon-purple-light);
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.problem-title {
+    color: var(--vs-foreground);
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.problem-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.problem-language {
+    color: var(--neon-purple-light);
+    background-color: rgba(176, 38, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.problem-difficulty {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.problem-difficulty.easy {
+    color: #50ff50;
+    background-color: rgba(80, 255, 80, 0.1);
+    text-shadow: 0 0 5px rgba(80, 255, 80, 0.5);
+}
+
+.problem-difficulty.medium {
+    color: #ffcc00;
+    background-color: rgba(255, 204, 0, 0.1);
+    text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+.problem-difficulty.hard {
+    color: #ff4444;
+    background-color: rgba(255, 68, 68, 0.1);
+    text-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .filter-bar select {
+        width: 100%;
+    }
+}
+
+/* 애니메이션 */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.problem-card {
+    animation: cardAppear 0.3s ease-out;
+}

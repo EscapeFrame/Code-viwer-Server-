@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코드 보기</title>
+
+    <!-- 기본 스타일 -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="/codemirror/theme/monokai.css">
+    <link rel="stylesheet" href="/codemirror/addon/dialog/dialog.css">
+
+    <!-- CodeMirror 코어 -->
+    <script src="/codemirror/lib/codemirror.js"></script>
+
+    <!-- CodeMirror 모드 -->
+    <script src="/codemirror/mode/javascript/javascript.js"></script>
+    <script src="/codemirror/mode/xml/xml.js"></script>
+    <script src="/codemirror/mode/css/css.js"></script>
+    <script src="/codemirror/mode/python/python.js"></script>
+    <script src="/codemirror/mode/clike/clike.js"></script>
+
+    <!-- CodeMirror 애드온 -->
+    <script src="/codemirror/addon/search/searchcursor.js"></script>
+    <script src="/codemirror/addon/search/search.js"></script>
+    <script src="/codemirror/addon/dialog/dialog.js"></script>
+
+    <style>
+        :root {
+            --vscode-bg: #1e1e1e;
+            --vscode-sidebar: #252526;
+            --vscode-text: #d4d4d4;
+            --vscode-line-number: #858585;
+            --vscode-selection: #264f78;
+            --vscode-border: #404040;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            line-height: 1.5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: var(--bg-medium);
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-name {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .code-container {
+            flex: 1;
+            display: flex;
+            overflow: auto;
+            background-color: var(--bg-dark);
+        }
+
+        .line-numbers-and-content {
+            display: flex;
+            min-width: 100%;
+        }
+
+        .line-numbers {
+            background-color: var(--bg-dark);
+            padding: 15px 10px;
+            color: var(--text-muted);
+            text-align: right;
+            user-select: none;
+            border-right: 1px solid var(--border-color);
+            min-width: 50px;
+        }
+
+        .code-content {
+            flex: 1;
+            overflow-x: auto;
+            padding: 15px;
+        }
+
+        pre {
+            margin: 0;
+            background-color: transparent !important;
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+        }
+
+        /* 스크롤바 스타일링 */
+        ::-webkit-scrollbar {
+            width: 14px;
+            height: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-light);
+            border: 3px solid var(--bg-dark);
+            border-radius: 7px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        .CodeMirror {
+            height: auto !important;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: var(--bg-dark) !important;
+        }
+
+        .CodeMirror-gutters {
+            border-right: 1px solid var(--border-color) !important;
+            background-color: var(--bg-dark) !important;
+            position: sticky;
+            left: 0;
+        }
+
+        .CodeMirror-linenumbers {
+            padding: 0 8px;
+        }
+
+        .CodeMirror-scroll {
+            min-height: 300px;
+        }
+
+        .code-container {
+            position: relative;
+            overflow: auto;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        #codeContent {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="vscode-body">
+    <div class="header">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 4.5L8 2L2.5 4.5V11.5L8 14L13.5 11.5V4.5Z" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+        <span class="file-name" id="fileName">loading...</span>
+    </div>
+    <div class="code-container">
+        <textarea id="codeContent"></textarea>
+    </div>
+
+    <div class="toolbar">
+        <button id="addComment" class="toolbar-button">주석 추가</button>
+        <button id="aiAnalysis" class="toolbar-button">AI 분석</button>
+    </div>
+
+    <div id="commentForm" style="display: none;">
+        <textarea placeholder="주석을 입력하세요..."></textarea>
+        <button class="toolbar-button">저장</button>
+    </div>
+
+    <div id="aiAnalysisResult" class="analysis-result" style="display: none;"></div>
+
+    <script>
+        window.CodeViewerApp = window.CodeViewerApp || {};
+        CodeViewerApp.API_ENDPOINTS = {
+            comments: (file) => `/api/comments/${file}`,
+            analyze: (file) => `/api/analyze/${file}`,
+            problem: (file) => `/api/problem/${file}`
+        };
+    </script>
+    <script src="/js/codeViewer.js"></script>
+</body>
+
+</html>

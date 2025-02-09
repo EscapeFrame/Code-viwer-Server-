@@ -1,20 +1,18 @@
 {
-  "name": "code-viwer",
+  "name": "code-viewer",
   "version": "1.0.0",
+  "description": "코드 독해력 향상을 위한 플랫폼",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "firebase": "^11.2.0",
-    "morgan": "^1.10.0",
-    "nodemon": "^3.1.9"
+    "codemirror": "^5.65.16",
+    "express": "^4.18.2",
+    "highlight.js": "^11.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

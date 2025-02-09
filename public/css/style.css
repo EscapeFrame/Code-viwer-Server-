@@ -1,0 +1,434 @@
+:root {
+    /* 기본 색상 */
+    --primary: #7c3aed;
+    /* 보라색 */
+    --primary-light: #8b5cf6;
+    --primary-dark: #6d28d9;
+    --secondary: #10b981;
+    /* 초록색 */
+    --accent: #f59e0b;
+    /* 주황색 */
+
+    /* 배경 색상 */
+    --bg-dark: #18181b;
+    --bg-medium: #27272a;
+    --bg-light: #3f3f46;
+
+    /* 텍스트 색상 */
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+
+    /* 테두리 색상 */
+    --border-color: #3f3f46;
+
+    /* 그림자 효과 */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 리셋 및 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* 레이아웃 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* 네비게이션 */
+.navbar {
+    background-color: var(--bg-medium);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+/* 버튼 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--border-color);
+}
+
+/* 카드 */
+.card {
+    background-color: var(--bg-medium);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+/* 입력 필드 */
+.input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    color: var(--text-primary);
+    transition: all 0.2s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.1);
+}
+
+/* 그리드 */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 유틸리티 클래스 */
+.text-gradient {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glass {
+    background: rgba(39, 39, 42, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-light);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* VS Code 스타일 - 사이드바 */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-medium);
+    border-right: 1px solid var(--border-color);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+}
+
+.file-list li {
+    padding: 8px 20px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-list li:hover {
+    background-color: var(--bg-light);
+}
+
+.file-list li.active {
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+}
+
+/* VS Code 스타일 - 메인 컨텐츠 */
+.main-content {
+    margin-left: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+    padding: 10px 20px;
+    background-color: var(--bg-medium);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar-button {
+    padding: 4px 12px;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.toolbar-button:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.code-container {
+    display: flex;
+    overflow-x: auto;
+    position: relative;
+    background-color: var(--bg-medium);
+}
+
+.line-numbers-and-content {
+    display: flex;
+    min-width: 100%;
+}
+
+.line-numbers {
+    display: inline-block;
+    padding: 8px;
+    border-right: 1px solid var(--border-color);
+    user-select: none;
+    color: var(--text-muted);
+    line-height: 1.6;
+    text-align: right;
+    min-width: 40px;
+    margin-right: 10px;
+}
+
+.code-content {
+    flex: 1;
+    padding: 8px;
+    white-space: pre;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+/* AI 도구바 */
+.ai-toolbar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 250px;
+    background-color: var(--bg-medium);
+    border-top: 1px solid var(--border-color);
+    padding: 10px 20px;
+}
+
+.ai-search {
+    display: flex;
+    gap: 10px;
+}
+
+.ai-search input {
+    flex: 1;
+    padding: 6px 12px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 4px;
+}
+
+.ai-search input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* 분석 결과 */
+.analysis-result {
+    padding: 20px;
+    background-color: var(--bg-medium);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+/* 주석 폼 */
+#commentForm {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    background-color: var(--bg-medium);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    width: 300px;
+}
+
+.comment-input {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* 파일 아이콘 스타일 */
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.file-item:hover {
+    background-color: var(--bg-light);
+}
+
+.file-item.active {
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+}
+
+.file-item svg {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+}
+
+.file-item.active svg {
+    color: var(--text-primary);
+}
+
+.error {
+    color: #ef4444;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
