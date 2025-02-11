@@ -1,0 +1,7 @@
+{
+  "/api/problems/route": "app/api/problems/route.js",
+  "/api/problems/[file]/route": "app/api/problems/[file]/route.js",
+  "/problems/page": "app/problems/page.js",
+  "/problems/[file]/page": "app/problems/[file]/page.js",
+  "/page": "app/page.js"
+}

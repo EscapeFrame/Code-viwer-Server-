@@ -1,0 +1,188 @@
+@import '../../public/css/main.css';
+@import '../../public/css/problems.css';
+@import '../../public/css/style.css';
+
+/* 추가적인 전역 스타일 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #18181b;
+    color: #f4f4f5;
+}
+
+
+.ai-analysis-box {
+    background: #1e1e1e;
+    color: #ffffff;
+    padding: 20px;
+    overflow-y: auto;
+    border-top: 1px solid #444;
+    position: relative;
+    padding-bottom:65px;
+}
+
+
+.resize-handle {
+    width: 100%;
+    height: 10px;
+    background: #555;
+    cursor: ns-resize;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+.resize-handle:hover {
+    background: #777;
+}
+
+
+.ai-analysis-box h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: #f4f4f5;
+}
+
+.ai-analysis-box p {
+    margin: 5px 0;
+    color: #bdbdbd;
+}
+
+.ai-analysis-box ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.ai-analysis-box li {
+    color: #bdbdbd;
+}
+
+.ai-analysis-box p > strong {
+    font-size: 500;
+    color: #d0d0d0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.file-name{
+    font-size:26px;
+    font-weight: 650;
+    margin:-3px 0;
+}
+
+.save-button{
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    background: #7e3de7;
+    color: white;
+    transition: background 0.2s;   
+    font-size:16.1px;
+}
+.save-button:hover {
+    background: #583372;
+}
+
+
+
+.toggle-button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    background: #61afef;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.toggle-button:hover {
+    background: #528bff;
+}
+
+
+
+
+.cm-content ::selection,
+.cm-content ::-moz-selection,
+::selection,
+::-moz-selection {
+    background: rgba(169, 169, 169, 0.5) !important; 
+    color: inherit !important;
+}
+
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+    overflow: hidden; 
+}
+
+
+.editor-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+}
+.code-editor {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0;
+    overflow: auto !important; 
+}
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #21252b !important; 
+    color: #ffffff !important;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+}
+
+
+.bottom-toolbar {
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #18181b;
+    display: flex;
+    gap:20px;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 1px solid #333;
+}
+
+.toolbar-button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    background-color: #3a3f4b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.toolbar-button:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+
+

@@ -282,20 +282,7 @@ body {
     gap: 10px;
 }
 
-.toolbar-button {
-    padding: 4px 12px;
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
 
-.toolbar-button:hover {
-    background-color: var(--primary);
-    color: white;
-}
 
 .code-container {
     display: flex;
@@ -432,3 +419,18 @@ body {
     padding: 8px 16px;
     font-size: 0.9rem;
 }
+
+/* 문제 번호 링크 색상 변경 */
+.problems-list a {
+    color: var(--text-primary); /* 기본 텍스트 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: bold;
+  }
+  
+  .problems-list a:hover {
+    color: var(--primary-light); /* 링크에 호버 시 밝은 보라색 */
+  }
+  
+  .problems-list a:visited {
+    color: var(--text-secondary); /* 방문한 링크 색상 변경 */
+  }

@@ -4,13 +4,26 @@
   "description": "코드 독해력 향상을 위한 플랫폼",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "codemirror": "^5.65.16",
-    "express": "^4.18.2",
-    "highlight.js": "^11.9.0"
+    "@codemirror/lang-cpp": "^6.0.2",
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.9",
+    "@codemirror/lang-java": "^6.0.1",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/lang-python": "^6.1.7",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@uiw/codemirror-theme-vscode": "^4.23.8",
+    "@uiw/codemirror-themes": "^4.23.8",
+    "@uiw/react-codemirror": "^4.23.8",
+    "highlight.js": "^11.11.1",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "thememirror": "^2.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

@@ -16,3 +16,4 @@ if __name__ == "__main__":
     test_array = [64, 34, 25, 12, 22, 11, 90]
     sorted_array = bubble_sort(test_array)
     print("정렬된 배열:", sorted_array) 
+    print("섹스")

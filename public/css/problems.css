@@ -47,48 +47,48 @@
     gap: 20px;
 }
 
-.problem-card {
-    background-color: var(--vs-sidebar);
-    border: 1px solid var(--neon-purple);
-    border-radius: 8px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: var(--neon-glow);
-}
 
+.problem-card {
+    background-color:rgb(40, 40, 40) ;
+    background: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    transition: all 0.3s ease;
+}
 .problem-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     border-color: var(--neon-purple-light);
     box-shadow: var(--neon-glow-strong);
 }
 
 .problem-number {
-    color: var(--neon-purple-light);
-    font-size: 14px;
-    margin-bottom: 8px;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #888; 
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .problem-title {
-    color: var(--vs-foreground);
-    font-size: 18px;
-    margin-bottom: 12px;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
 }
 
 .problem-info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
 }
-
 .problem-language {
-    color: var(--neon-purple-light);
-    background-color: rgba(176, 38, 255, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
+    font-size: 1rem;
+    color: #a1a1aa;
+    font-weight: 500;
 }
 
 .problem-difficulty {
@@ -142,3 +142,30 @@
 .problem-card {
     animation: cardAppear 0.3s ease-out;
 }
+
+
+
+
+/* ✅ CodeMirror에서 텍스트 드래그(선택) 색상 변경 */
+.cm-selectionBackground {
+    background: rgba(69, 71, 88, 0.7) !important; /* ✅ 회색 */
+}
+
+.cm-selectionMatch {
+    background: rgba(69, 71, 88, 0.7) !important; /* ✅ 회색 */
+}
+
+/* ✅ 기본 브라우저 선택 영역 스타일 변경 */
+::selection {
+    background: rgba(69, 71, 88, 0.7) !important; /* ✅ 회색 */
+    color: inherit !important;
+}
+
+::-moz-selection {
+    background: rgba(69, 71, 88, 0.7) !important; /* ✅ 회색 */
+    color: inherit !important;
+}
+
+
+
+
