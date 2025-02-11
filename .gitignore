@@ -151,3 +151,4 @@ dist/
 # 시스템 파일
 .DS_Store
 Thumbs.dbnode_modules/
+node_modules/
